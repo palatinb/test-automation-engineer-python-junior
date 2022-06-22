@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+    <testsuite name="pytest" errors="0" failures="0" skipped="0" tests="24" time="0.050"
+               timestamp="2022-06-22T21:58:50.384308" hostname="PBs-MacBook-Pro.local">
+        <testcase classname="test_all.TestSumClass" name="test_Sum" time="0.001"/>
+        <testcase classname="test_all.TestSumClass" name="test_SumOneNegative" time="0.000"/>
+        <testcase classname="test_all.TestSumClass" name="test_SumTwoNegative" time="0.000"/>
+        <testcase classname="test_all.TestSumClass" name="test_TypeError" time="0.001"/>
+        <testcase classname="test_all.TestSubClass" name="test_Sub" time="0.000"/>
+        <testcase classname="test_all.TestSubClass" name="test_SubOneNegative" time="0.000"/>
+        <testcase classname="test_all.TestSubClass" name="test_SubTwoNegative" time="0.000"/>
+        <testcase classname="test_all.TestSubClass" name="test_TypeError" time="0.000"/>
+        <testcase classname="test_all.TestMulClass" name="test_MultipleWithZero" time="0.000"/>
+        <testcase classname="test_all.TestMulClass" name="test_Multiple" time="0.000"/>
+        <testcase classname="test_all.TestMulClass" name="test_MultipleOneNegative" time="0.000"/>
+        <testcase classname="test_all.TestMulClass" name="test_MultipleTwoNegative" time="0.001"/>
+        <testcase classname="test_all.TestMulClass" name="test_TypeError" time="0.000"/>
+        <testcase classname="test_all.TestDivClass" name="test_DivisionWithZero" time="0.000"/>
+        <testcase classname="test_all.TestDivClass" name="test_Division" time="0.000"/>
+        <testcase classname="test_all.TestDivClass" name="test_DivisionOneNegative" time="0.000"/>
+        <testcase classname="test_all.TestDivClass" name="test_DivisionTwoNegative" time="0.001"/>
+        <testcase classname="test_all.TestDivClass" name="test_DivisionPart" time="0.000"/>
+        <testcase classname="test_all.TestDivClass" name="test_TypeError" time="0.000"/>
+        <testcase classname="test_all.TestRemClass" name="test_RemWithZero" time="0.000"/>
+        <testcase classname="test_all.TestRemClass" name="test_Rem" time="0.000"/>
+        <testcase classname="test_all.TestRemClass" name="test_RemOneNegative" time="0.000"/>
+        <testcase classname="test_all.TestRemClass" name="test_RemTwoNegative" time="0.001"/>
+        <testcase classname="test_all.TestRemClass" name="test_TypeError" time="0.000"/>
+    </testsuite>
+</testsuites>
