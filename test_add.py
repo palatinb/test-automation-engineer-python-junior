@@ -6,7 +6,7 @@ import calculator
 class TestAddClass:
     calc = calculator.Calculator()
 
-    def test_add_(self):
+    def test_add(self):
         assert self.calc.add(3, 5) == 8
 
     def test_add_with_one_negative(self):

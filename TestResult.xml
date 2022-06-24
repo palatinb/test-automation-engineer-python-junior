@@ -1,30 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
-<testsuites>
-    <testsuite name="pytest" errors="0" failures="0" skipped="0" tests="24" time="0.050"
-               timestamp="2022-06-22T21:58:50.384308" hostname="PBs-MacBook-Pro.local">
-        <testcase classname="test_all.TestSumClass" name="test_Sum" time="0.001"/>
-        <testcase classname="test_all.TestSumClass" name="test_SumOneNegative" time="0.000"/>
-        <testcase classname="test_all.TestSumClass" name="test_SumTwoNegative" time="0.000"/>
-        <testcase classname="test_all.TestSumClass" name="test_TypeError" time="0.001"/>
-        <testcase classname="test_all.TestSubClass" name="test_Sub" time="0.000"/>
-        <testcase classname="test_all.TestSubClass" name="test_SubOneNegative" time="0.000"/>
-        <testcase classname="test_all.TestSubClass" name="test_SubTwoNegative" time="0.000"/>
-        <testcase classname="test_all.TestSubClass" name="test_TypeError" time="0.000"/>
-        <testcase classname="test_all.TestMulClass" name="test_MultipleWithZero" time="0.000"/>
-        <testcase classname="test_all.TestMulClass" name="test_Multiple" time="0.000"/>
-        <testcase classname="test_all.TestMulClass" name="test_MultipleOneNegative" time="0.000"/>
-        <testcase classname="test_all.TestMulClass" name="test_MultipleTwoNegative" time="0.001"/>
-        <testcase classname="test_all.TestMulClass" name="test_TypeError" time="0.000"/>
-        <testcase classname="test_all.TestDivClass" name="test_DivisionWithZero" time="0.000"/>
-        <testcase classname="test_all.TestDivClass" name="test_Division" time="0.000"/>
-        <testcase classname="test_all.TestDivClass" name="test_DivisionOneNegative" time="0.000"/>
-        <testcase classname="test_all.TestDivClass" name="test_DivisionTwoNegative" time="0.001"/>
-        <testcase classname="test_all.TestDivClass" name="test_DivisionPart" time="0.000"/>
-        <testcase classname="test_all.TestDivClass" name="test_TypeError" time="0.000"/>
-        <testcase classname="test_all.TestRemClass" name="test_RemWithZero" time="0.000"/>
-        <testcase classname="test_all.TestRemClass" name="test_Rem" time="0.000"/>
-        <testcase classname="test_all.TestRemClass" name="test_RemOneNegative" time="0.000"/>
-        <testcase classname="test_all.TestRemClass" name="test_RemTwoNegative" time="0.001"/>
-        <testcase classname="test_all.TestRemClass" name="test_TypeError" time="0.000"/>
-    </testsuite>
-</testsuites>
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="42" time="0.133" timestamp="2022-06-24T15:25:41.130097" hostname="PBs-MacBook-Pro.local"><testcase classname="test_add.TestAddClass" name="test_add" time="0.001" /><testcase classname="test_add.TestAddClass" name="test_add_with_one_negative" time="0.000" /><testcase classname="test_add.TestAddClass" name="test_add_with_two_negative" time="0.000" /><testcase classname="test_add.TestAddClass" name="test_type_error" time="0.000" /><testcase classname="test_band.TestBitwiseAndClass" name="test_bitwise_and" time="0.000" /><testcase classname="test_band.TestBitwiseAndClass" name="test_bitwise_and_with_missing_arg" time="0.000" /><testcase classname="test_bnot.TestBitwiseNotClass" name="test_bitwise_not" time="0.001"><failure message="assert 156 == 99">self = &lt;test_bnot.TestBitwiseNotClass object at 0x10db77160&gt;
+
+    def test_bitwise_not(self):
+        value_a = 156
+        result = ""
+        expected_result = self.calc.bnot(value_a)
+        # Reversing the strings to start from the end
+        binary_a, binary_b = binary_helper.convertToBinary(value_a)
+        for i in range(len(binary_a)):
+            if binary_a[i] == str(1):
+                result += str(0)
+            else:
+                result += str(1)
+    
+        # After creating the result string I reverse it to convert it back to decimal
+        actual_result = binary_helper.binaryToDecimal("".join(reversed(result)))
+    
+&gt;       assert expected_result == actual_result
+E       assert 156 == 99
+
+test_bnot.py:24: AssertionError</failure></testcase><testcase classname="test_bnot.TestBitwiseNotClass" name="test_bitwise_not_with_missing_arg" time="0.000" /><testcase classname="test_bor.TestBitwiseOrClass" name="test_bitwise_or" time="0.000" /><testcase classname="test_bor.TestBitwiseOrClass" name="test_bitwise_or_with_missing_arg" time="0.000" /><testcase classname="test_bshl.TestBitwiseShiftLeftClass" name="test_bitwise_shift_left" time="0.001"><failure message="assert 9 == (39 * 4)&#10; +  where 4 = pow(2, 2)">self = &lt;test_bshl.TestBitwiseShiftLeftClass object at 0x10db76c50&gt;
+
+    def test_bitwise_shift_left(self):
+        value_a = 39
+        shift = 2
+        expected_result = self.calc.bshl(value_a, shift)
+&gt;       assert expected_result == value_a * pow(2, shift)
+E       assert 9 == (39 * 4)
+E        +  where 4 = pow(2, 2)
+
+test_bshl.py:12: AssertionError</failure></testcase><testcase classname="test_bshl.TestBitwiseShiftLeftClass" name="test_bitwise_shift_left_with_missing_arg" time="0.000" /><testcase classname="test_bshr.TestBitwiseShiftRightClass" name="test_bitwise_shift_right" time="0.000"><failure message="assert 628 == 39">self = &lt;test_bshr.TestBitwiseShiftRightClass object at 0x10db76830&gt;
+
+    def test_bitwise_shift_right(self):
+        value_a = 157
+        shift = 2
+        expected_result = self.calc.bshr(value_a, shift)
+        actual_result = value_a // pow(2, shift)
+&gt;       assert expected_result == actual_result
+E       assert 628 == 39
+
+test_bshr.py:13: AssertionError</failure></testcase><testcase classname="test_bshr.TestBitwiseShiftRightClass" name="test_bitwise_shift_right_with_missing_arg" time="0.000" /><testcase classname="test_bxor.TestBitwiseXorClass" name="test_bitwise_xor" time="0.000" /><testcase classname="test_bxor.TestBitwiseXorClass" name="test_bitwise_xor_with_missing_arg" time="0.000" /><testcase classname="test_checksum.TestChecksumClass" name="test_checksum" time="0.008"><failure message="AssertionError: assert '0' == '07563a3fe3bb...4431ad9d055af'&#10;  - 07563a3fe3bbe7e3ba84431ad9d055af&#10;  + 0">self = &lt;test_checksum.TestChecksumClass object at 0x10db754e0&gt;
+
+    def test_checksum(self):
+&gt;       assert str(self.calc.checksum(521)) == hashlib.md5(str(521).encode('utf-8')).hexdigest()
+E       AssertionError: assert '0' == '07563a3fe3bb...4431ad9d055af'
+E         - 07563a3fe3bbe7e3ba84431ad9d055af
+E         + 0
+
+test_checksum.py:12: AssertionError</failure></testcase><testcase classname="test_checksum.TestChecksumClass" name="test_bitwise_and_with_missing_arg" time="0.000" /><testcase classname="test_div.TestDivClass" name="test_division_with_zero" time="0.001" /><testcase classname="test_div.TestDivClass" name="test_division" time="0.000" /><testcase classname="test_div.TestDivClass" name="test_division_with_one_negative" time="0.000" /><testcase classname="test_div.TestDivClass" name="test_division_with_two_negative" time="0.000" /><testcase classname="test_div.TestDivClass" name="test_division_part" time="0.000" /><testcase classname="test_div.TestDivClass" name="test_type_error" time="0.000" /><testcase classname="test_mul.TestMulClass" name="test_multiple_with_zero" time="0.000" /><testcase classname="test_mul.TestMulClass" name="test_multiple" time="0.000" /><testcase classname="test_mul.TestMulClass" name="test_multiple_with_one_negative" time="0.000" /><testcase classname="test_mul.TestMulClass" name="test_multiple_with_two_negative" time="0.000" /><testcase classname="test_mul.TestMulClass" name="test_type_error" time="0.000" /><testcase classname="test_rem.TestRemClass" name="test_rem_with_zero" time="0.000" /><testcase classname="test_rem.TestRemClass" name="test_rem" time="0.001" /><testcase classname="test_rem.TestRemClass" name="test_rem_with_one_negative" time="0.000" /><testcase classname="test_rem.TestRemClass" name="test_rem_with_two_negative" time="0.000" /><testcase classname="test_rem.TestRemClass" name="test_type_error" time="0.000" /><testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt" time="0.000" /><testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt_with_zero" time="0.000" /><testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt_with_negative" time="0.000" /><testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt_with_empty_call" time="0.000" /><testcase classname="test_sub.TestSubClass" name="test_sub" time="0.000" /><testcase classname="test_sub.TestSubClass" name="test_sub_with_one_negative" time="0.000" /><testcase classname="test_sub.TestSubClass" name="test_sub_with_two_negative" time="0.000" /><testcase classname="test_sub.TestSubClass" name="test_type_error" time="0.000" /></testsuite></testsuites>
