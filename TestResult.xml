@@ -1,49 +1,716 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="42" time="0.133" timestamp="2022-06-24T15:25:41.130097" hostname="PBs-MacBook-Pro.local"><testcase classname="test_add.TestAddClass" name="test_add" time="0.001" /><testcase classname="test_add.TestAddClass" name="test_add_with_one_negative" time="0.000" /><testcase classname="test_add.TestAddClass" name="test_add_with_two_negative" time="0.000" /><testcase classname="test_add.TestAddClass" name="test_type_error" time="0.000" /><testcase classname="test_band.TestBitwiseAndClass" name="test_bitwise_and" time="0.000" /><testcase classname="test_band.TestBitwiseAndClass" name="test_bitwise_and_with_missing_arg" time="0.000" /><testcase classname="test_bnot.TestBitwiseNotClass" name="test_bitwise_not" time="0.001"><failure message="assert 156 == 99">self = &lt;test_bnot.TestBitwiseNotClass object at 0x10db77160&gt;
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+    <testsuite name="pytest" errors="0" failures="31" skipped="0" tests="94" time="0.319"
+               timestamp="2022-06-27T13:18:30.326337" hostname="PBs-MacBook-Pro.local">
+        <testcase classname="test_add.TestAddClass" name="test_add[10-5-15]" time="0.001"/>
+        <testcase classname="test_add.TestAddClass" name="test_add[-1-1-0]" time="0.001"/>
+        <testcase classname="test_add.TestAddClass" name="test_add[-1--1--2]" time="0.001"/>
+        <testcase classname="test_add.TestAddClass" name="test_type_error" time="0.000"/>
+        <testcase classname="test_band.TestBitwiseAndClass" name="test_bitwise_and[156-52]" time="0.001"/>
+        <testcase classname="test_band.TestBitwiseAndClass" name="test_bitwise_and[351-21]" time="0.001"/>
+        <testcase classname="test_band.TestBitwiseAndClass" name="test_bitwise_and[159-65]" time="0.001"/>
+        <testcase classname="test_band.TestBitwiseAndClass" name="test_bitwise_and_with_missing_arg" time="0.000"/>
+        <testcase classname="test_bnot.TestBitwiseNotClass" name="test_bitwise_not[156]" time="0.001">
+            <failure
+                    message="assert 156 == -(156 + 1)&#10; +  where 156 = &lt;bound method Calculator.bnot of &lt;calculator.Calculator object at 0x10ce880d0&gt;&gt;(156)&#10; +    where &lt;bound method Calculator.bnot of &lt;calculator.Calculator object at 0x10ce880d0&gt;&gt; = &lt;calculator.Calculator object at 0x10ce880d0&gt;.bnot&#10; +      where &lt;calculator.Calculator object at 0x10ce880d0&gt; = &lt;test_bnot.TestBitwiseNotClass object at 0x10ce88fd0&gt;.calc">
+                self = &lt;test_bnot.TestBitwiseNotClass object at 0x10ce88fd0&gt;, a = 156
 
-    def test_bitwise_not(self):
-        value_a = 156
-        result = ""
-        expected_result = self.calc.bnot(value_a)
-        # Reversing the strings to start from the end
-        binary_a, binary_b = binary_helper.convertToBinary(value_a)
-        for i in range(len(binary_a)):
-            if binary_a[i] == str(1):
-                result += str(0)
-            else:
-                result += str(1)
-    
-        # After creating the result string I reverse it to convert it back to decimal
-        actual_result = binary_helper.binaryToDecimal("".join(reversed(result)))
-    
-&gt;       assert expected_result == actual_result
-E       assert 156 == 99
+                @pytest.mark.parametrize("a",
+                [156,
+                351,
+                159])
+                def test_bitwise_not(self, a):
+                &gt; assert self.calc.bnot(a) == -(a+1)
+                E assert 156 == -(156 + 1)
+                E + where 156 = &lt;bound method Calculator.bnot of &lt;calculator.Calculator object at 0x10ce880d0&gt;&gt;(156)
+                E + where &lt;bound method Calculator.bnot of &lt;calculator.Calculator object at 0x10ce880d0&gt;&gt; =
+                &lt;calculator.Calculator object at 0x10ce880d0&gt;.bnot
+                E + where &lt;calculator.Calculator object at 0x10ce880d0&gt; = &lt;test_bnot.TestBitwiseNotClass object
+                at 0x10ce88fd0&gt;.calc
 
-test_bnot.py:24: AssertionError</failure></testcase><testcase classname="test_bnot.TestBitwiseNotClass" name="test_bitwise_not_with_missing_arg" time="0.000" /><testcase classname="test_bor.TestBitwiseOrClass" name="test_bitwise_or" time="0.000" /><testcase classname="test_bor.TestBitwiseOrClass" name="test_bitwise_or_with_missing_arg" time="0.000" /><testcase classname="test_bshl.TestBitwiseShiftLeftClass" name="test_bitwise_shift_left" time="0.001"><failure message="assert 9 == (39 * 4)&#10; +  where 4 = pow(2, 2)">self = &lt;test_bshl.TestBitwiseShiftLeftClass object at 0x10db76c50&gt;
+                test_bnot.py:13: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_bnot.TestBitwiseNotClass" name="test_bitwise_not[351]" time="0.001">
+            <failure
+                    message="assert 351 == -(351 + 1)&#10; +  where 351 = &lt;bound method Calculator.bnot of &lt;calculator.Calculator object at 0x10ce880d0&gt;&gt;(351)&#10; +    where &lt;bound method Calculator.bnot of &lt;calculator.Calculator object at 0x10ce880d0&gt;&gt; = &lt;calculator.Calculator object at 0x10ce880d0&gt;.bnot&#10; +      where &lt;calculator.Calculator object at 0x10ce880d0&gt; = &lt;test_bnot.TestBitwiseNotClass object at 0x10ce89150&gt;.calc">
+                self = &lt;test_bnot.TestBitwiseNotClass object at 0x10ce89150&gt;, a = 351
 
-    def test_bitwise_shift_left(self):
-        value_a = 39
-        shift = 2
-        expected_result = self.calc.bshl(value_a, shift)
-&gt;       assert expected_result == value_a * pow(2, shift)
-E       assert 9 == (39 * 4)
-E        +  where 4 = pow(2, 2)
+                @pytest.mark.parametrize("a",
+                [156,
+                351,
+                159])
+                def test_bitwise_not(self, a):
+                &gt; assert self.calc.bnot(a) == -(a+1)
+                E assert 351 == -(351 + 1)
+                E + where 351 = &lt;bound method Calculator.bnot of &lt;calculator.Calculator object at 0x10ce880d0&gt;&gt;(351)
+                E + where &lt;bound method Calculator.bnot of &lt;calculator.Calculator object at 0x10ce880d0&gt;&gt; =
+                &lt;calculator.Calculator object at 0x10ce880d0&gt;.bnot
+                E + where &lt;calculator.Calculator object at 0x10ce880d0&gt; = &lt;test_bnot.TestBitwiseNotClass object
+                at 0x10ce89150&gt;.calc
 
-test_bshl.py:12: AssertionError</failure></testcase><testcase classname="test_bshl.TestBitwiseShiftLeftClass" name="test_bitwise_shift_left_with_missing_arg" time="0.000" /><testcase classname="test_bshr.TestBitwiseShiftRightClass" name="test_bitwise_shift_right" time="0.000"><failure message="assert 628 == 39">self = &lt;test_bshr.TestBitwiseShiftRightClass object at 0x10db76830&gt;
+                test_bnot.py:13: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_bnot.TestBitwiseNotClass" name="test_bitwise_not[159]" time="0.001">
+            <failure
+                    message="assert 159 == -(159 + 1)&#10; +  where 159 = &lt;bound method Calculator.bnot of &lt;calculator.Calculator object at 0x10ce880d0&gt;&gt;(159)&#10; +    where &lt;bound method Calculator.bnot of &lt;calculator.Calculator object at 0x10ce880d0&gt;&gt; = &lt;calculator.Calculator object at 0x10ce880d0&gt;.bnot&#10; +      where &lt;calculator.Calculator object at 0x10ce880d0&gt; = &lt;test_bnot.TestBitwiseNotClass object at 0x10ce891e0&gt;.calc">
+                self = &lt;test_bnot.TestBitwiseNotClass object at 0x10ce891e0&gt;, a = 159
 
-    def test_bitwise_shift_right(self):
-        value_a = 157
-        shift = 2
-        expected_result = self.calc.bshr(value_a, shift)
-        actual_result = value_a // pow(2, shift)
-&gt;       assert expected_result == actual_result
-E       assert 628 == 39
+                @pytest.mark.parametrize("a",
+                [156,
+                351,
+                159])
+                def test_bitwise_not(self, a):
+                &gt; assert self.calc.bnot(a) == -(a+1)
+                E assert 159 == -(159 + 1)
+                E + where 159 = &lt;bound method Calculator.bnot of &lt;calculator.Calculator object at 0x10ce880d0&gt;&gt;(159)
+                E + where &lt;bound method Calculator.bnot of &lt;calculator.Calculator object at 0x10ce880d0&gt;&gt; =
+                &lt;calculator.Calculator object at 0x10ce880d0&gt;.bnot
+                E + where &lt;calculator.Calculator object at 0x10ce880d0&gt; = &lt;test_bnot.TestBitwiseNotClass object
+                at 0x10ce891e0&gt;.calc
 
-test_bshr.py:13: AssertionError</failure></testcase><testcase classname="test_bshr.TestBitwiseShiftRightClass" name="test_bitwise_shift_right_with_missing_arg" time="0.000" /><testcase classname="test_bxor.TestBitwiseXorClass" name="test_bitwise_xor" time="0.000" /><testcase classname="test_bxor.TestBitwiseXorClass" name="test_bitwise_xor_with_missing_arg" time="0.000" /><testcase classname="test_checksum.TestChecksumClass" name="test_checksum" time="0.008"><failure message="AssertionError: assert '0' == '07563a3fe3bb...4431ad9d055af'&#10;  - 07563a3fe3bbe7e3ba84431ad9d055af&#10;  + 0">self = &lt;test_checksum.TestChecksumClass object at 0x10db754e0&gt;
+                test_bnot.py:13: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_bnot.TestBitwiseNotClass" name="test_bitwise_not_with_missing_arg" time="0.000"/>
+        <testcase classname="test_bor.TestBitwiseOrClass" name="test_bitwise_or[156-52]" time="0.001"/>
+        <testcase classname="test_bor.TestBitwiseOrClass" name="test_bitwise_or[351-21]" time="0.001"/>
+        <testcase classname="test_bor.TestBitwiseOrClass" name="test_bitwise_or[159-65]" time="0.001"/>
+        <testcase classname="test_bor.TestBitwiseOrClass" name="test_bitwise_or_with_missing_arg" time="0.000"/>
+        <testcase classname="test_bshl.TestBitwiseShiftLeftClass" name="test_bitwise_shift_left[156-2]" time="0.001">
+            <failure message="assert 39 == (156 * 4)&#10; +  where 4 = pow(2, 2)">self = &lt;test_bshl.TestBitwiseShiftLeftClass
+                object at 0x10ce89cc0&gt;, a = 156, shift = 2
 
-    def test_checksum(self):
-&gt;       assert str(self.calc.checksum(521)) == hashlib.md5(str(521).encode('utf-8')).hexdigest()
-E       AssertionError: assert '0' == '07563a3fe3bb...4431ad9d055af'
-E         - 07563a3fe3bbe7e3ba84431ad9d055af
-E         + 0
+                @pytest.mark.parametrize("a,shift",
+                [(156, 2),
+                (354, 3),
+                (159, 1)])
+                def test_bitwise_shift_left(self, a, shift):
+                expected_result = self.calc.bshl(a, shift)
+                &gt; assert expected_result == a * pow(2, shift)
+                E assert 39 == (156 * 4)
+                E + where 4 = pow(2, 2)
 
-test_checksum.py:12: AssertionError</failure></testcase><testcase classname="test_checksum.TestChecksumClass" name="test_bitwise_and_with_missing_arg" time="0.000" /><testcase classname="test_div.TestDivClass" name="test_division_with_zero" time="0.001" /><testcase classname="test_div.TestDivClass" name="test_division" time="0.000" /><testcase classname="test_div.TestDivClass" name="test_division_with_one_negative" time="0.000" /><testcase classname="test_div.TestDivClass" name="test_division_with_two_negative" time="0.000" /><testcase classname="test_div.TestDivClass" name="test_division_part" time="0.000" /><testcase classname="test_div.TestDivClass" name="test_type_error" time="0.000" /><testcase classname="test_mul.TestMulClass" name="test_multiple_with_zero" time="0.000" /><testcase classname="test_mul.TestMulClass" name="test_multiple" time="0.000" /><testcase classname="test_mul.TestMulClass" name="test_multiple_with_one_negative" time="0.000" /><testcase classname="test_mul.TestMulClass" name="test_multiple_with_two_negative" time="0.000" /><testcase classname="test_mul.TestMulClass" name="test_type_error" time="0.000" /><testcase classname="test_rem.TestRemClass" name="test_rem_with_zero" time="0.000" /><testcase classname="test_rem.TestRemClass" name="test_rem" time="0.001" /><testcase classname="test_rem.TestRemClass" name="test_rem_with_one_negative" time="0.000" /><testcase classname="test_rem.TestRemClass" name="test_rem_with_two_negative" time="0.000" /><testcase classname="test_rem.TestRemClass" name="test_type_error" time="0.000" /><testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt" time="0.000" /><testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt_with_zero" time="0.000" /><testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt_with_negative" time="0.000" /><testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt_with_empty_call" time="0.000" /><testcase classname="test_sub.TestSubClass" name="test_sub" time="0.000" /><testcase classname="test_sub.TestSubClass" name="test_sub_with_one_negative" time="0.000" /><testcase classname="test_sub.TestSubClass" name="test_sub_with_two_negative" time="0.000" /><testcase classname="test_sub.TestSubClass" name="test_type_error" time="0.000" /></testsuite></testsuites>
+                test_bshl.py:14: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_bshl.TestBitwiseShiftLeftClass" name="test_bitwise_shift_left[354-3]" time="0.002">
+            <failure message="assert 44 == (354 * 8)&#10; +  where 8 = pow(2, 3)">self = &lt;test_bshl.TestBitwiseShiftLeftClass
+                object at 0x10ce89d50&gt;, a = 354, shift = 3
+
+                @pytest.mark.parametrize("a,shift",
+                [(156, 2),
+                (354, 3),
+                (159, 1)])
+                def test_bitwise_shift_left(self, a, shift):
+                expected_result = self.calc.bshl(a, shift)
+                &gt; assert expected_result == a * pow(2, shift)
+                E assert 44 == (354 * 8)
+                E + where 8 = pow(2, 3)
+
+                test_bshl.py:14: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_bshl.TestBitwiseShiftLeftClass" name="test_bitwise_shift_left[159-1]" time="0.001">
+            <failure message="assert 79 == (159 * 2)&#10; +  where 2 = pow(2, 1)">self = &lt;test_bshl.TestBitwiseShiftLeftClass
+                object at 0x10ce89de0&gt;, a = 159, shift = 1
+
+                @pytest.mark.parametrize("a,shift",
+                [(156, 2),
+                (354, 3),
+                (159, 1)])
+                def test_bitwise_shift_left(self, a, shift):
+                expected_result = self.calc.bshl(a, shift)
+                &gt; assert expected_result == a * pow(2, shift)
+                E assert 79 == (159 * 2)
+                E + where 2 = pow(2, 1)
+
+                test_bshl.py:14: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_bshl.TestBitwiseShiftLeftClass" name="test_bitwise_shift_left_with_missing_arg"
+                  time="0.001"/>
+        <testcase classname="test_bshr.TestBitwiseShiftRightClass" name="test_bitwise_shift_right[156-2]" time="0.001">
+            <failure message="assert 624 == 39">self = &lt;test_bshr.TestBitwiseShiftRightClass object at 0x10ce8a320&gt;,
+                a = 156, shift = 2
+
+                @pytest.mark.parametrize("a,shift",
+                [(156, 2),
+                (354, 3),
+                (159, 1)])
+                def test_bitwise_shift_right(self, a, shift):
+                expected_result = self.calc.bshr(a, shift)
+                actual_result = a // pow(2, shift)
+                &gt; assert expected_result == actual_result
+                E assert 624 == 39
+
+                test_bshr.py:15: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_bshr.TestBitwiseShiftRightClass" name="test_bitwise_shift_right[354-3]" time="0.001">
+            <failure message="assert 2832 == 44">self = &lt;test_bshr.TestBitwiseShiftRightClass object at 0x10ce8a3b0&gt;,
+                a = 354, shift = 3
+
+                @pytest.mark.parametrize("a,shift",
+                [(156, 2),
+                (354, 3),
+                (159, 1)])
+                def test_bitwise_shift_right(self, a, shift):
+                expected_result = self.calc.bshr(a, shift)
+                actual_result = a // pow(2, shift)
+                &gt; assert expected_result == actual_result
+                E assert 2832 == 44
+
+                test_bshr.py:15: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_bshr.TestBitwiseShiftRightClass" name="test_bitwise_shift_right[159-1]" time="0.001">
+            <failure message="assert 318 == 79">self = &lt;test_bshr.TestBitwiseShiftRightClass object at 0x10ce8a440&gt;,
+                a = 159, shift = 1
+
+                @pytest.mark.parametrize("a,shift",
+                [(156, 2),
+                (354, 3),
+                (159, 1)])
+                def test_bitwise_shift_right(self, a, shift):
+                expected_result = self.calc.bshr(a, shift)
+                actual_result = a // pow(2, shift)
+                &gt; assert expected_result == actual_result
+                E assert 318 == 79
+
+                test_bshr.py:15: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_bshr.TestBitwiseShiftRightClass" name="test_bitwise_shift_right_with_missing_arg"
+                  time="0.000"/>
+        <testcase classname="test_bxor.TestBitwiseXorClass" name="test_bitwise_xor[156-52]" time="0.001"/>
+        <testcase classname="test_bxor.TestBitwiseXorClass" name="test_bitwise_xor[351-21]" time="0.001"/>
+        <testcase classname="test_bxor.TestBitwiseXorClass" name="test_bitwise_xor[159-65]" time="0.001"/>
+        <testcase classname="test_bxor.TestBitwiseXorClass" name="test_bitwise_xor_with_missing_arg" time="0.000"/>
+        <testcase classname="test_checksum.TestChecksumClass" name="test_checksum[521]" time="0.004">
+            <failure
+                    message="AssertionError: assert '0' == '07563a3fe3bb...4431ad9d055af'&#10;  - 07563a3fe3bbe7e3ba84431ad9d055af&#10;  + 0">
+                self = &lt;test_checksum.TestChecksumClass object at 0x10ce8b400&gt;, a = 521
+
+                @pytest.mark.parametrize("a",
+                [521,
+                354,
+                296])
+                def test_checksum(self, a):
+                &gt; assert str(self.calc.checksum(a)) == hashlib.md5(str(a).encode('utf-8')).hexdigest()
+                E AssertionError: assert '0' == '07563a3fe3bb...4431ad9d055af'
+                E - 07563a3fe3bbe7e3ba84431ad9d055af
+                E + 0
+
+                test_checksum.py:14: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_checksum.TestChecksumClass" name="test_checksum[354]" time="0.001">
+            <failure
+                    message="AssertionError: assert '0' == '8dd48d6a2e2c...9a3992c0be53c'&#10;  - 8dd48d6a2e2cad213179a3992c0be53c&#10;  + 0">
+                self = &lt;test_checksum.TestChecksumClass object at 0x10ce8b4c0&gt;, a = 354
+
+                @pytest.mark.parametrize("a",
+                [521,
+                354,
+                296])
+                def test_checksum(self, a):
+                &gt; assert str(self.calc.checksum(a)) == hashlib.md5(str(a).encode('utf-8')).hexdigest()
+                E AssertionError: assert '0' == '8dd48d6a2e2c...9a3992c0be53c'
+                E - 8dd48d6a2e2cad213179a3992c0be53c
+                E + 0
+
+                test_checksum.py:14: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_checksum.TestChecksumClass" name="test_checksum[296]" time="0.001">
+            <failure
+                    message="AssertionError: assert '0' == 'd296c101daa8...a8cfc1ac79b50'&#10;  - d296c101daa88a51f6ca8cfc1ac79b50&#10;  + 0">
+                self = &lt;test_checksum.TestChecksumClass object at 0x10ce8b550&gt;, a = 296
+
+                @pytest.mark.parametrize("a",
+                [521,
+                354,
+                296])
+                def test_checksum(self, a):
+                &gt; assert str(self.calc.checksum(a)) == hashlib.md5(str(a).encode('utf-8')).hexdigest()
+                E AssertionError: assert '0' == 'd296c101daa8...a8cfc1ac79b50'
+                E - d296c101daa88a51f6ca8cfc1ac79b50
+                E + 0
+
+                test_checksum.py:14: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_checksum.TestChecksumClass" name="test_bitwise_and_with_missing_arg" time="0.000"/>
+        <testcase classname="test_div.TestDivClass" name="test_division[5555-5-1111]" time="0.001"/>
+        <testcase classname="test_div.TestDivClass" name="test_division[-54-9--6]" time="0.001"/>
+        <testcase classname="test_div.TestDivClass" name="test_division[-35--5-7]" time="0.001"/>
+        <testcase classname="test_div.TestDivClass" name="test_division[10-4-2.5]" time="0.001"/>
+        <testcase classname="test_div.TestDivClass" name="test_division_with_zero" time="0.000"/>
+        <testcase classname="test_div.TestDivClass" name="test_type_error" time="0.000"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_add[3 5-8\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_add[2 4-6\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_add[6 9-15\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_sub[3 5--2\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_sub[12 5-7\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_sub[6 -9-15\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_div[5555 5-1111\n]" time="0.001">
+            <failure message="AssertionError: assert '0\n' == '1111\n'&#10;  - 1111&#10;  + 0">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf18eb0&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cf53fa0&gt;,
+                test_input = '5555 5', expected = '1111\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("5555 5", "1111\n"), ("-54 9", "-6\n"), ("-35 -5",
+                "7\n"), ("10 4", "2.5\n")])
+                def test_interactive_mode_div(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_div(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '0\n' == '1111\n'
+                E - 1111
+                E + 0
+
+                test_icalc.py:34: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_div[-54 9--6\n]" time="0.001">
+            <failure message="AssertionError: assert '0\n' == '-6\n'&#10;  - -6&#10;  + 0">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf18f10&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cfef790&gt;,
+                test_input = '-54 9', expected = '-6\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("5555 5", "1111\n"), ("-54 9", "-6\n"), ("-35 -5",
+                "7\n"), ("10 4", "2.5\n")])
+                def test_interactive_mode_div(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_div(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '0\n' == '-6\n'
+                E - -6
+                E + 0
+
+                test_icalc.py:34: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_div[-35 -5-7\n]" time="0.001">
+            <failure message="AssertionError: assert '0\n' == '7\n'&#10;  - 7&#10;  + 0">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf18fd0&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cfb34c0&gt;,
+                test_input = '-35 -5', expected = '7\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("5555 5", "1111\n"), ("-54 9", "-6\n"), ("-35 -5",
+                "7\n"), ("10 4", "2.5\n")])
+                def test_interactive_mode_div(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_div(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '0\n' == '7\n'
+                E - 7
+                E + 0
+
+                test_icalc.py:34: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_div[10 4-2.5\n]" time="0.001">
+            <failure message="AssertionError: assert '2\n' == '2.5\n'&#10;  - 2.5&#10;  + 2">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf19060&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cff35b0&gt;,
+                test_input = '10 4', expected = '2.5\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("5555 5", "1111\n"), ("-54 9", "-6\n"), ("-35 -5",
+                "7\n"), ("10 4", "2.5\n")])
+                def test_interactive_mode_div(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_div(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '2\n' == '2.5\n'
+                E - 2.5
+                E + 2
+
+                test_icalc.py:34: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_mul[10 5-50\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_mul[232 0-0\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_mul[6 -9--54\n]" time="0.002"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_rem[13 5-3\n]" time="0.001">
+            <failure message="AssertionError: assert '2.6\n' == '3\n'&#10;  - 3&#10;  + 2.6">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf19540&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10d003eb0&gt;,
+                test_input = '13 5', expected = '3\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("13 5", "3\n"), ("8 4", "0\n"), ("-35 -5", "0\n")])
+                def test_interactive_mode_rem(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_rem(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '2.6\n' == '3\n'
+                E - 3
+                E + 2.6
+
+                test_icalc.py:54: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_rem[8 4-0\n]" time="0.001">
+            <failure message="AssertionError: assert '2.0\n' == '0\n'&#10;  - 0&#10;  + 2.0">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf195d0&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cff3310&gt;,
+                test_input = '8 4', expected = '0\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("13 5", "3\n"), ("8 4", "0\n"), ("-35 -5", "0\n")])
+                def test_interactive_mode_rem(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_rem(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '2.0\n' == '0\n'
+                E - 0
+                E + 2.0
+
+                test_icalc.py:54: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_rem[-35 -5-0\n]" time="0.001">
+            <failure message="AssertionError: assert '7.0\n' == '0\n'&#10;  - 0&#10;  + 7.0">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf18dc0&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cfb1570&gt;,
+                test_input = '-35 -5', expected = '0\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("13 5", "3\n"), ("8 4", "0\n"), ("-35 -5", "0\n")])
+                def test_interactive_mode_rem(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_rem(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '7.0\n' == '0\n'
+                E - 0
+                E + 7.0
+
+                test_icalc.py:54: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_sqrt[9-3\n]" time="0.001">
+            <failure message="TypeError: Calculator.sub() missing 1 required positional argument: 'b'">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf196c0&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cff4be0&gt;,
+                test_input = '9', expected = '3\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("9", "3\n"), ("0", "0\n"), ("25", "5\n")])
+                def test_interactive_mode_sqrt(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                &gt; calc.do_sqrt(test_input)
+
+                test_icalc.py:61:
+                _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                _ _ _ _ _ _ _ _ _ _ _ _
+
+                self = &lt;icalc.InteractiveCalculator object at 0x10cff58d0&gt;, arg = '9'
+
+                def do_sqrt(self, arg):
+                'sqrt(A)'
+                &gt; print(self.cal.sub(*parse(arg)))
+                E TypeError: Calculator.sub() missing 1 required positional argument: 'b'
+
+                icalc.py:35: TypeError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_sqrt[0-0\n]" time="0.001">
+            <failure message="TypeError: Calculator.sub() missing 1 required positional argument: 'b'">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf19750&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cf53e80&gt;,
+                test_input = '0', expected = '0\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("9", "3\n"), ("0", "0\n"), ("25", "5\n")])
+                def test_interactive_mode_sqrt(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                &gt; calc.do_sqrt(test_input)
+
+                test_icalc.py:61:
+                _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                _ _ _ _ _ _ _ _ _ _ _ _
+
+                self = &lt;icalc.InteractiveCalculator object at 0x10cfede70&gt;, arg = '0'
+
+                def do_sqrt(self, arg):
+                'sqrt(A)'
+                &gt; print(self.cal.sub(*parse(arg)))
+                E TypeError: Calculator.sub() missing 1 required positional argument: 'b'
+
+                icalc.py:35: TypeError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_sqrt[25-5\n]" time="0.001">
+            <failure message="TypeError: Calculator.sub() missing 1 required positional argument: 'b'">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf197e0&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cfb0df0&gt;,
+                test_input = '25', expected = '5\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("9", "3\n"), ("0", "0\n"), ("25", "5\n")])
+                def test_interactive_mode_sqrt(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                &gt; calc.do_sqrt(test_input)
+
+                test_icalc.py:61:
+                _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                _ _ _ _ _ _ _ _ _ _ _ _
+
+                self = &lt;icalc.InteractiveCalculator object at 0x10cfb27d0&gt;, arg = '25'
+
+                def do_sqrt(self, arg):
+                'sqrt(A)'
+                &gt; print(self.cal.sub(*parse(arg)))
+                E TypeError: Calculator.sub() missing 1 required positional argument: 'b'
+
+                icalc.py:35: TypeError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bxor[156 52-168\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bxor[351 21-330\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bxor[159 65-222\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bshr[156 2-39\n]" time="0.001">
+            <failure message="NameError: name 'arg' is not defined">self = &lt;test_icalc.TestIcalcClass object at
+                0x10cf19cc0&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cfed570&gt;, test_input =
+                '156 2', expected = '39\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("156 2", "39\n"), ("354 3", "44\n"), ("159 1",
+                "79\n")])
+                def test_interactive_mode_bshr(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                &gt; calc.do_bit_shift_right(test_input)
+
+                test_icalc.py:81:
+                _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                _ _ _ _ _ _ _ _ _ _ _ _
+
+                self = &lt;icalc.InteractiveCalculator object at 0x10cfec700&gt;, a = '156 2'
+
+                def do_bit_shift_right(self, a):
+                'num &gt;&gt; shift'
+                &gt; print(self.cal.bshl(*parse(arg)))
+                E NameError: name 'arg' is not defined
+
+                icalc.py:59: NameError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bshr[354 3-44\n]" time="0.001">
+            <failure message="NameError: name 'arg' is not defined">self = &lt;test_icalc.TestIcalcClass object at
+                0x10cf19d50&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cff6fb0&gt;, test_input =
+                '354 3', expected = '44\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("156 2", "39\n"), ("354 3", "44\n"), ("159 1",
+                "79\n")])
+                def test_interactive_mode_bshr(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                &gt; calc.do_bit_shift_right(test_input)
+
+                test_icalc.py:81:
+                _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                _ _ _ _ _ _ _ _ _ _ _ _
+
+                self = &lt;icalc.InteractiveCalculator object at 0x10cff4940&gt;, a = '354 3'
+
+                def do_bit_shift_right(self, a):
+                'num &gt;&gt; shift'
+                &gt; print(self.cal.bshl(*parse(arg)))
+                E NameError: name 'arg' is not defined
+
+                icalc.py:59: NameError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bshr[159 1-79\n]" time="0.001">
+            <failure message="NameError: name 'arg' is not defined">self = &lt;test_icalc.TestIcalcClass object at
+                0x10cf19de0&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cff1a50&gt;, test_input =
+                '159 1', expected = '79\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("156 2", "39\n"), ("354 3", "44\n"), ("159 1",
+                "79\n")])
+                def test_interactive_mode_bshr(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                &gt; calc.do_bit_shift_right(test_input)
+
+                test_icalc.py:81:
+                _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                _ _ _ _ _ _ _ _ _ _ _ _
+
+                self = &lt;icalc.InteractiveCalculator object at 0x10cff3bb0&gt;, a = '159 1'
+
+                def do_bit_shift_right(self, a):
+                'num &gt;&gt; shift'
+                &gt; print(self.cal.bshl(*parse(arg)))
+                E NameError: name 'arg' is not defined
+
+                icalc.py:59: NameError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bshl[156 2-624\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bshl[354 3-2832\n]" time="0.002"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bshl[159 1-318\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bor[156 52-188\n]" time="0.001">
+            <failure message="AssertionError: assert '' == '188\n'&#10;  - 188">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf1a2c0&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10d000fa0&gt;,
+                test_input = '156 52', expected = '188\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("156 52", "188\n"), ("351 21", "351\n"), ("159 65",
+                "223\n")])
+                def test_interactive_mode_bor(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_bit_or(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '' == '188\n'
+                E - 188
+
+                test_icalc.py:104: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bor[351 21-351\n]" time="0.001">
+            <failure message="AssertionError: assert '' == '351\n'&#10;  - 351">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf1a350&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cfeea40&gt;,
+                test_input = '351 21', expected = '351\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("156 52", "188\n"), ("351 21", "351\n"), ("159 65",
+                "223\n")])
+                def test_interactive_mode_bor(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_bit_or(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '' == '351\n'
+                E - 351
+
+                test_icalc.py:104: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bor[159 65-223\n]" time="0.001">
+            <failure message="AssertionError: assert '' == '223\n'&#10;  - 223">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf1a3e0&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10d003790&gt;,
+                test_input = '159 65', expected = '223\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("156 52", "188\n"), ("351 21", "351\n"), ("159 65",
+                "223\n")])
+                def test_interactive_mode_bor(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_bit_or(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '' == '223\n'
+                E - 223
+
+                test_icalc.py:104: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bnot[156--157\n]" time="0.001">
+            <failure message="AssertionError: assert '156\n' == '-157\n'&#10;  - -157&#10;  + 156">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf1a5c0&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cfeff70&gt;,
+                test_input = '156', expected = '-157\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("156", "-157\n"), ("351", "-352\n"), ("159",
+                "-160\n")])
+                def test_interactive_mode_bnot(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_bit_not(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '156\n' == '-157\n'
+                E - -157
+                E + 156
+
+                test_icalc.py:114: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bnot[351--352\n]" time="0.001">
+            <failure message="AssertionError: assert '351\n' == '-352\n'&#10;  - -352&#10;  + 351">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf1a620&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10d003b80&gt;,
+                test_input = '351', expected = '-352\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("156", "-157\n"), ("351", "-352\n"), ("159",
+                "-160\n")])
+                def test_interactive_mode_bnot(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_bit_not(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '351\n' == '-352\n'
+                E - -352
+                E + 351
+
+                test_icalc.py:114: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_bnot[159--160\n]" time="0.001">
+            <failure message="AssertionError: assert '159\n' == '-160\n'&#10;  - -160&#10;  + 159">self = &lt;test_icalc.TestIcalcClass
+                object at 0x10cf1a6e0&gt;, capsys = &lt;_pytest.capture.CaptureFixture object at 0x10cfeceb0&gt;,
+                test_input = '159', expected = '-160\n'
+
+                @pytest.mark.parametrize("test_input,expected", [("156", "-157\n"), ("351", "-352\n"), ("159",
+                "-160\n")])
+                def test_interactive_mode_bnot(self, capsys, test_input, expected):
+                calc = icalc.InteractiveCalculator()
+
+                calc.do_bit_not(test_input)
+                out, err = capsys.readouterr()
+
+                &gt; assert out == expected
+                E AssertionError: assert '159\n' == '-160\n'
+                E - -160
+                E + 159
+
+                test_icalc.py:114: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_band[156 52-20\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_band[351 21-21\n]" time="0.001"/>
+        <testcase classname="test_icalc.TestIcalcClass" name="test_interactive_mode_band[159 65-1\n]" time="0.001"/>
+        <testcase classname="test_mul.TestMulClass" name="test_multiple[10-5-50]" time="0.001"/>
+        <testcase classname="test_mul.TestMulClass" name="test_multiple[2535-0-0]" time="0.001"/>
+        <testcase classname="test_mul.TestMulClass" name="test_multiple[12--3--36]" time="0.001"/>
+        <testcase classname="test_mul.TestMulClass" name="test_multiple[-35--22-770]" time="0.001"/>
+        <testcase classname="test_mul.TestMulClass" name="test_type_error" time="0.000"/>
+        <testcase classname="test_rem.TestRemClass" name="test_rem[13-5-3]" time="0.001"/>
+        <testcase classname="test_rem.TestRemClass" name="test_rem[-13-5-2]" time="0.001"/>
+        <testcase classname="test_rem.TestRemClass" name="test_rem[-35--5-0]" time="0.001"/>
+        <testcase classname="test_rem.TestRemClass" name="test_type_error" time="0.000"/>
+        <testcase classname="test_rem.TestRemClass" name="test_rem_with_zero" time="0.000"/>
+        <testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt[9-3]" time="0.001"/>
+        <testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt[0-0]" time="0.001"/>
+        <testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt[25-5]" time="0.001"/>
+        <testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt_with_negative" time="0.001"/>
+        <testcase classname="test_sqrt.TestSqrtClass" name="test_sqrt_with_empty_call" time="0.000"/>
+        <testcase classname="test_sub.TestSubClass" name="test_sub[10-5-5]" time="0.001"/>
+        <testcase classname="test_sub.TestSubClass" name="test_sub[-1-1--2]" time="0.001"/>
+        <testcase classname="test_sub.TestSubClass" name="test_sub[-1--1-0]" time="0.001"/>
+        <testcase classname="test_sub.TestSubClass" name="test_type_error" time="0.000"/>
+    </testsuite>
+</testsuites>

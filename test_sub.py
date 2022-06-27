@@ -5,14 +5,12 @@ import calculator
 class TestSubClass:
     calc = calculator.Calculator()
 
-    def test_sub(self):
-        assert self.calc.sub(3, 5) == -2
-
-    def test_sub_with_one_negative(self):
-        assert self.calc.sub(-5, 5) == -10
-
-    def test_sub_with_two_negative(self):
-        assert self.calc.sub(-5, -5) == 0
+    @pytest.mark.parametrize("a,b,expected",
+                             [(10, 5, 5),
+                              (-1, 1, -2),
+                              (-1, -1, 0)])
+    def test_sub(self, a, b, expected):
+        assert self.calc.sub(a, b) == expected
 
     def test_type_error(self):
         with pytest.raises(TypeError):

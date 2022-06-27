@@ -8,13 +8,15 @@ class TestBitwiseXorClass:
     calc = calculator.Calculator()
     binary = ""
 
-    def test_bitwise_xor(self):
-        value_a = 156
-        value_b = 52
+    @pytest.mark.parametrize("a,b",
+                             [(156, 52),
+                              (351, 21),
+                              (159, 65)])
+    def test_bitwise_xor(self, a, b):
         result = ""
-        expected_result = self.calc.bxor(value_a, value_b)
+        expected_result = self.calc.bxor(a, b)
         # Reversing the strings to start from the end
-        binary_a, binary_b = binary_helper.convertToBinary(value_a, value_b)
+        binary_a, binary_b = binary_helper.convertToBinary(a, b)
 
         for i in range(len(binary_a)):
             if (binary_a[i] == str(1) and binary_b[i] == str(0)) or (binary_a[i] == str(0) and binary_b[i] == str(1)):

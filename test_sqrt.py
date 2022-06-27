@@ -5,11 +5,12 @@ import calculator
 class TestSqrtClass:
     calc = calculator.Calculator()
 
-    def test_sqrt(self):
-        assert self.calc.sqrt(9) == 3
-
-    def test_sqrt_with_zero(self):
-        assert self.calc.sqrt(0) == 0
+    @pytest.mark.parametrize("a,expected",
+                             [(9, 3),
+                              (0, 0),
+                              (25, 5)])
+    def test_sqrt(self, a, expected):
+        assert self.calc.sqrt(a) == expected
 
     def test_sqrt_with_negative(self):
         with pytest.raises(ValueError):
